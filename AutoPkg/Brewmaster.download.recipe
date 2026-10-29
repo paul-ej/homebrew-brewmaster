@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>https://github.com/paul-ej/brewmaster/releases/download/v0.1.5/Brewmaster-0.1.5.pkg</string>
+		<string>https://github.com/paul-ej/homebrew-brewmaster/releases/download/v0.1.5/Brewmaster-0.1.5.pkg</string>
 		<key>EXPECTED_INSTALLER_AUTHORITY</key>
 		<string>Developer ID Installer: Paul Jones (49G9R48EJL)</string>
 		<key>NAME</key>
