@@ -1,6 +1,6 @@
 cask "brewmaster" do
-  version "0.1.7"
-  sha256 "fd50862f725cd916afde4422fbcc439c0ce72f6f752f75191cad0eaa68fe3e91"
+  version "0.1.8"
+  sha256 "9567ac30cb40b2ece879f3ef73f4ececd908b14b63ef5937d3ba51a44b506179"
 
   url "https://github.com/paul-ej/homebrew-brewmaster/releases/download/v#{version}/Brewmaster-#{version}.pkg"
   name "Brewmaster"
