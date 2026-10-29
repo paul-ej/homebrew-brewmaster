@@ -1,6 +1,6 @@
 cask "brewmaster" do
-  version "0.1.4"
-  sha256 "468ed7668ca31bc4813c5fdf10071f15e14dc3d7920b9f2d3d4f02fbb3e136f9"
+  version "0.1.5"
+  sha256 "b89599ba68d208122bd6903c93fbbaff0089035e76b70456030b4a488e540038"
 
   url "https://github.com/paul-ej/brewmaster/releases/download/v#{version}/Brewmaster-#{version}.pkg"
   name "Brewmaster"
@@ -8,7 +8,7 @@ cask "brewmaster" do
   homepage "https://github.com/paul-ej/brewmaster"
 
   depends_on arch: :arm64
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   pkg "Brewmaster-#{version}.pkg"
 
