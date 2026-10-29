@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AllowedPackages</key>
+	<array/>
+	<key>AllowedTaps</key>
+	<array>
+		<string>homebrew/core</string>
+		<string>homebrew/cask</string>
+	</array>
+	<key>Enabled</key>
+	<true/>
+	<key>ExcludedPackages</key>
+	<array/>
+	<key>HighlightedPackages</key>
+	<array/>
+	<key>IncludeCasks</key>
+	<true/>
+	<key>IncludeFormulae</key>
+	<true/>
+	<key>MaintenanceWindowEnabled</key>
+	<false/>
+	<key>MaintenanceWindowEnd</key>
+	<string>06:00</string>
+	<key>MaintenanceWindowStart</key>
+	<string>20:00</string>
+	<key>MinimumSeverity</key>
+	<string>high</string>
+	<key>PackageAllowlistEnforced</key>
+	<false/>
+	<key>PartialFailureReporting</key>
+	<true/>
+	<key>RequireUpdateConfirmation</key>
+	<false/>
+	<key>UpdateCadenceDays</key>
+	<integer>7</integer>
+	<key>UpdatePolicy</key>
+	<string>all</string>
+	<key>VulnerabilityScanEnabled</key>
+	<true/>
+</dict>
+</plist>

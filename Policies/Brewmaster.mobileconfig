@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadContent</key>
+			<dict>
+				<key>com.paul-ej.brewmaster</key>
+				<dict>
+					<key>Forced</key>
+					<array>
+						<dict>
+							<key>mcx_preference_settings</key>
+							<dict>
+								<key>AllowedPackages</key>
+								<array/>
+								<key>AllowedTaps</key>
+								<array>
+									<string>homebrew/core</string>
+									<string>homebrew/cask</string>
+								</array>
+								<key>Enabled</key>
+								<true/>
+								<key>ExcludedPackages</key>
+								<array/>
+								<key>HighlightedPackages</key>
+								<array/>
+								<key>IncludeCasks</key>
+								<true/>
+								<key>IncludeFormulae</key>
+								<true/>
+								<key>MaintenanceWindowEnabled</key>
+								<false/>
+								<key>MaintenanceWindowEnd</key>
+								<string>06:00</string>
+								<key>MaintenanceWindowStart</key>
+								<string>20:00</string>
+								<key>MinimumSeverity</key>
+								<string>high</string>
+								<key>PackageAllowlistEnforced</key>
+								<false/>
+								<key>PartialFailureReporting</key>
+								<true/>
+								<key>RequireUpdateConfirmation</key>
+								<false/>
+								<key>UpdateCadenceDays</key>
+								<integer>7</integer>
+								<key>UpdatePolicy</key>
+								<string>all</string>
+								<key>VulnerabilityScanEnabled</key>
+								<true/>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>PayloadDisplayName</key>
+			<string>Brewmaster Managed Preferences</string>
+			<key>PayloadIdentifier</key>
+			<string>com.paul-ej.brewmaster.managed-preferences</string>
+			<key>PayloadType</key>
+			<string>com.apple.ManagedClient.preferences</string>
+			<key>PayloadUUID</key>
+			<string>09DC2943-B99D-424F-B6AE-7CD0EDE30B6B</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Policy template for Brewmaster 0.1.7. Review before deployment; customise identifiers and UUIDs for your organisation. Does not install Brewmaster or Homebrew.</string>
+	<key>PayloadDisplayName</key>
+	<string>Brewmaster Policy</string>
+	<key>PayloadIdentifier</key>
+	<string>com.paul-ej.brewmaster.configuration</string>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>08B10BD9-CA3C-4720-B215-6843905C3F75</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
