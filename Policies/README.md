@@ -60,3 +60,11 @@ Brewmaster itself is updated through its install channel after quitting the app.
 Explicit installation is available by default, with fresh latest-version metadata and installed-target verification. Package/type/tap/allowlist/exclusion/window rules apply; auditOnly blocks installation. Highlighted/vulnerability selection modes govern upgrades.
 
 Critical deadlines use supported CVSS v3.0/v3.1 base vectors retrieved from OSV by public advisory ID, and require exact available-version fix evidence. CVSS v2/v4 or absent scores remain unknown. The earlier normal/critical deadline applies without resetting the critical clock for upstream target churn; new targets require fresh matching evidence. OSV receives advisory IDs, not inventory/history. Sleep, policy, pins, approval and maintenance windows can delay execution.
+
+## App Management PPPC
+
+[Brewmaster-AppManagement.mobileconfig](Brewmaster-AppManagement.mobileconfig) is a separate, unsigned MDM starter profile granting only `SystemPolicyAppBundles` (App Management) to `com.paul-ej.brewmaster`, constrained to Developer ID team `49G9R48EJL`. Its requirement was checked against the installed signed app. Review it against your deployed app with `codesign -d -r- /Applications/Brewmaster.app`, customise profile identifiers/UUIDs and deploy through user-approved device MDM (for example, an Iru Custom Profile). PPPC grants cannot be enabled by manually installing this profile.
+
+This grants neither Full Disk Access nor administrator privileges, and does not authorize every Homebrew subprocess independently. Validate actual cask upgrades on managed test devices; subprocess attribution and Homebrew's own execution behaviour can affect permission checks. Do not grant blanket permissions to `/bin/bash` or Homebrew's Ruby merely to work around attribution. This profile is separate from the generated preference templates and is not installed by the PKG. The source copy is intended for MDM upload; it is not currently a generated release asset.
+
+For a personal Mac use System Settings → Privacy & Security → App Management, enable/add `/Applications/Brewmaster.app`, then relaunch it. [Apple's PPPC schema](https://github.com/apple/device-management/blob/release/mdm/profiles/com.apple.TCC.configuration-profile-policy.yaml) documents the service and MDM requirement.
