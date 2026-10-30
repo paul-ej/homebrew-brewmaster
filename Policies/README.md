@@ -28,6 +28,11 @@ Do not change Boolean values into strings. Unknown or misspelled keys are ignore
 | `UpdatePolicy` | `all`; latest reported available versions. |
 | `UpdateCadenceDays` | `7`; grace period after first detection, **not** the check interval. |
 | `RequireUpdateConfirmation` | `false`; true requires approval and leaves due automatic updates pending. |
+| `AllowPackageInstallation` | `true`; explicit latest-version installation within access rules. |
+| `AllowUnpinning` | `true`; offer always-confirmed Unpin & Update. Bulk/automatic updates retain pins. |
+| `CriticalUpdatesEnabled` | `true`; accelerate verified critical fixes. |
+| `CriticalCVSSThreshold` | `9.0`; finite numeric base score from 0 to 10. |
+| `CriticalUpdateDeadlineHours` | `24`; at least one hour from first verified qualifying fix. |
 | `VulnerabilityScanEnabled` | `true`; attempt supported formula vulnerability scanning. |
 | `MinimumSeverity` | `high`; vulnerability-only threshold. |
 | `IncludeFormulae`, `IncludeCasks` | Both `true`. |
@@ -46,8 +51,12 @@ Use real Booleans/integers/arrays and strict 24-hour `HH:mm` values. Grace perio
 
 The running app checks approximately every 15 minutes and at launch. Enabling Open at login helps resume checks after sign-in. Quitting the app, sleep, network/installer failures, maintenance windows and approval requirements can delay updates. Seven days is a target for an eligible attempt, not a guaranteed installation deadline.
 
-A prompt requires a user click/approval; automatic checks never silently approve packages on the user’s behalf. Approval does not bypass pins, exclusions, allowed taps or other policy restrictions. Tap/package rules govern Brewmaster actions, not unrelated Terminal commands or Homebrew’s dependency/installation scripts.
+A prompt requires a user click/approval; automatic checks never silently approve packages on the user’s behalf. Ordinary approval does not remove pins. Explicit Unpin & Update always asks for approval, even with ordinary prompts off. Exclusions, allowed taps and other policy restrictions still apply. Tap/package rules govern Brewmaster actions, not unrelated Terminal commands or Homebrew’s dependency/installation scripts.
 
 Cask vulnerability coverage is unknown. Incomplete or unsupported scans cannot authorise vulnerability-only remediation. Ordinary `all` policy can update eligible packages without claiming a verified vulnerability fix.
 
 Brewmaster itself is updated through its install channel after quitting the app. The running app does not upgrade its own cask. The profile is separate from that installer and should be managed separately.
+
+Explicit installation is available by default, with fresh latest-version metadata and installed-target verification. Package/type/tap/allowlist/exclusion/window rules apply; auditOnly blocks installation. Highlighted/vulnerability selection modes govern upgrades.
+
+Critical deadlines use supported CVSS v3.0/v3.1 base vectors retrieved from OSV by public advisory ID, and require exact available-version fix evidence. CVSS v2/v4 or absent scores remain unknown. The earlier normal/critical deadline applies without resetting the critical clock for upstream target churn; new targets require fresh matching evidence. OSV receives advisory IDs, not inventory/history. Sleep, policy, pins, approval and maintenance windows can delay execution.

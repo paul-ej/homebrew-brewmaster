@@ -14,6 +14,10 @@
 						<dict>
 							<key>mcx_preference_settings</key>
 							<dict>
+								<key>AllowPackageInstallation</key>
+								<true/>
+								<key>AllowUnpinning</key>
+								<true/>
 								<key>AllowedPackages</key>
 								<array/>
 								<key>AllowedTaps</key>
@@ -21,6 +25,12 @@
 									<string>homebrew/core</string>
 									<string>homebrew/cask</string>
 								</array>
+								<key>CriticalCVSSThreshold</key>
+								<real>9</real>
+								<key>CriticalUpdateDeadlineHours</key>
+								<integer>24</integer>
+								<key>CriticalUpdatesEnabled</key>
+								<true/>
 								<key>Enabled</key>
 								<true/>
 								<key>ExcludedPackages</key>
@@ -69,7 +79,7 @@
 		</dict>
 	</array>
 	<key>PayloadDescription</key>
-	<string>Policy template for Brewmaster 0.1.8. Review before deployment; customise identifiers and UUIDs for your organisation. Does not install Brewmaster or Homebrew.</string>
+	<string>Policy template for Brewmaster 0.1.9. Review before deployment; customise identifiers and UUIDs for your organisation. Does not install Brewmaster or Homebrew.</string>
 	<key>PayloadDisplayName</key>
 	<string>Brewmaster Policy</string>
 	<key>PayloadIdentifier</key>

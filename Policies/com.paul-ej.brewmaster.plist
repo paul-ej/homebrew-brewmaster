@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowPackageInstallation</key>
+	<true/>
+	<key>AllowUnpinning</key>
+	<true/>
 	<key>AllowedPackages</key>
 	<array/>
 	<key>AllowedTaps</key>
@@ -9,6 +13,12 @@
 		<string>homebrew/core</string>
 		<string>homebrew/cask</string>
 	</array>
+	<key>CriticalCVSSThreshold</key>
+	<real>9</real>
+	<key>CriticalUpdateDeadlineHours</key>
+	<integer>24</integer>
+	<key>CriticalUpdatesEnabled</key>
+	<true/>
 	<key>Enabled</key>
 	<true/>
 	<key>ExcludedPackages</key>
