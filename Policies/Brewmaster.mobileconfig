@@ -16,6 +16,8 @@
 							<dict>
 								<key>AllowPackageInstallation</key>
 								<true/>
+								<key>AllowSelfUpdates</key>
+								<true/>
 								<key>AllowUnpinning</key>
 								<true/>
 								<key>AllowedPackages</key>
@@ -79,7 +81,7 @@
 		</dict>
 	</array>
 	<key>PayloadDescription</key>
-	<string>Policy template for Brewmaster 0.1.11. Review before deployment; customise identifiers and UUIDs for your organisation. Does not install Brewmaster or Homebrew.</string>
+	<string>Policy template for Brewmaster 0.1.12. Review before deployment; customise identifiers and UUIDs for your organisation. Does not install Brewmaster or Homebrew.</string>
 	<key>PayloadDisplayName</key>
 	<string>Brewmaster Policy</string>
 	<key>PayloadIdentifier</key>

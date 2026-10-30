@@ -4,6 +4,8 @@
 <dict>
 	<key>AllowPackageInstallation</key>
 	<true/>
+	<key>AllowSelfUpdates</key>
+	<true/>
 	<key>AllowUnpinning</key>
 	<true/>
 	<key>AllowedPackages</key>

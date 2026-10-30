@@ -24,6 +24,7 @@ Do not change Boolean values into strings. Unknown or misspelled keys are ignore
 
 | Key | Default / meaning |
 | --- | --- |
+| `AllowSelfUpdates` | `true`; separate explicit native app-update channel. Set false on Iru-managed Macs. |
 | `Enabled` | `true`; permits eligible remediation. |
 | `UpdatePolicy` | `all`; latest reported available versions. |
 | `UpdateCadenceDays` | `7`; grace period after first detection, **not** the check interval. |
@@ -68,3 +69,5 @@ Critical deadlines use supported CVSS v3.0/v3.1 base vectors retrieved from OSV 
 This grants neither Full Disk Access nor administrator privileges, and does not authorize every Homebrew subprocess independently. Validate actual cask upgrades on managed test devices; subprocess attribution and Homebrew's own execution behaviour can affect permission checks. Do not grant blanket permissions to `/bin/bash` or Homebrew's Ruby merely to work around attribution. This profile is separate from the generated preference templates and is not installed by the PKG. The source copy is intended for MDM upload; it is not currently a generated release asset.
 
 For a personal Mac use System Settings → Privacy & Security → App Management, enable/add `/Applications/Brewmaster.app`, then relaunch it. [Apple's PPPC schema](https://github.com/apple/device-management/blob/release/mdm/profiles/com.apple.TCC.configuration-profile-policy.yaml) documents the service and MDM requirement.
+
+For Iru-owned app delivery, set Boolean `AllowSelfUpdates` to false in the managed preferences payload. This disables the native Check/Download/Install & Quit self-update channel, independently of ordinary Homebrew package restrictions. It does not change external Iru assignments. No extra PPPC grant or privileged helper is needed for self-updates: macOS Installer handles its normal administrator approval.
