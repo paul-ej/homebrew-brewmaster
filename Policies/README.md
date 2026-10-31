@@ -6,8 +6,10 @@ These are generated starter policies for Brewmaster, a macOS menu-bar app for Ho
 | --- | --- |
 | [com.paul-ej.brewmaster.plist](com.paul-ej.brewmaster.plist) | Plain preference values for inspection, customisation and import into your management platform. |
 | [Brewmaster.mobileconfig](Brewmaster.mobileconfig) | Unsigned Configuration profile containing forced managed preferences. Customise and deploy through MDM. |
+| [Brewmaster-AppManagement.mobileconfig](Brewmaster-AppManagement.mobileconfig) | Separate unsigned PPPC starter granting only App Management to the signed Brewmaster app. |
+| [MDM-Implementation-Playbook.md](MDM-Implementation-Playbook.md) | AI-agent-friendly discovery, implementation and pilot-validation plan for Iru, Jamf Pro, Intune and Addigy. |
 
-In the public distribution repository, the release workflow refreshes both files in `Policies` after successful publication. Copies are also attached to each [Brewmaster release](https://github.com/paul-ej/homebrew-brewmaster/releases). Use release-specific files if you need to retain the starting point for a particular deployment.
+The public [Brewmaster distribution repository](https://github.com/paul-ej/homebrew-brewmaster) is the MDM hand-off location. After successful publication, its `Policies` directory contains these three files and this guide; each release also attaches the installers and all three profiles. Use versioned release assets when you need to retain the exact starting point for a deployment.
 
 ## Start here
 
@@ -66,7 +68,7 @@ Critical deadlines use supported CVSS v3.0/v3.1 base vectors retrieved from OSV 
 
 [Brewmaster-AppManagement.mobileconfig](Brewmaster-AppManagement.mobileconfig) is a separate, unsigned MDM starter profile granting only `SystemPolicyAppBundles` (App Management) to `com.paul-ej.brewmaster`, constrained to Developer ID team `49G9R48EJL`. Its requirement was checked against the installed signed app. Review it against your deployed app with `codesign -d -r- /Applications/Brewmaster.app`, customise profile identifiers/UUIDs and deploy through user-approved device MDM (for example, an Iru Custom Profile). PPPC grants cannot be enabled by manually installing this profile.
 
-This grants neither Full Disk Access nor administrator privileges, and does not authorize every Homebrew subprocess independently. Validate actual cask upgrades on managed test devices; subprocess attribution and Homebrew's own execution behaviour can affect permission checks. Do not grant blanket permissions to `/bin/bash` or Homebrew's Ruby merely to work around attribution. This profile is separate from the generated preference templates and is not installed by the PKG. The source copy is intended for MDM upload; it is not currently a generated release asset.
+This grants neither Full Disk Access nor administrator privileges, and does not authorize every Homebrew subprocess independently. Validate actual cask upgrades on managed test devices; subprocess attribution and Homebrew's own execution behaviour can affect permission checks. Do not grant blanket permissions to `/bin/bash` or Homebrew's Ruby merely to work around attribution. This profile is separate from the generated preference templates and is not installed by the PKG. The reviewed source copy is published as a release asset and in the public `Policies` directory for MDM upload.
 
 For a personal Mac use System Settings → Privacy & Security → App Management, enable/add `/Applications/Brewmaster.app`, then relaunch it. [Apple's PPPC schema](https://github.com/apple/device-management/blob/release/mdm/profiles/com.apple.TCC.configuration-profile-policy.yaml) documents the service and MDM requirement.
 

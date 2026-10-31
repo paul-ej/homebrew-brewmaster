@@ -3,19 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads and verifies Brewmaster 0.1.12's signed vendor installer.</string>
+	<string>Downloads and verifies Brewmaster 0.1.13's signed vendor installer.</string>
 	<key>Identifier</key>
 	<string>com.github.paul-ej.download.Brewmaster</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>https://github.com/paul-ej/homebrew-brewmaster/releases/download/v0.1.12/Brewmaster-0.1.12.pkg</string>
+		<string>https://github.com/paul-ej/homebrew-brewmaster/releases/download/v0.1.13/Brewmaster-0.1.13.pkg</string>
 		<key>EXPECTED_INSTALLER_AUTHORITY</key>
 		<string>Developer ID Installer: Paul Jones (49G9R48EJL)</string>
 		<key>NAME</key>
 		<string>Brewmaster</string>
 		<key>VERSION</key>
-		<string>0.1.12</string>
+		<string>0.1.13</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>2.3</string>
