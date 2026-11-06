@@ -18,8 +18,14 @@
 								<true/>
 								<key>AllowSelfUpdates</key>
 								<true/>
+								<key>AllowUnapprovedPackageRemoval</key>
+								<false/>
 								<key>AllowUnpinning</key>
 								<true/>
+								<key>AllowedCasks</key>
+								<array/>
+								<key>AllowedFormulae</key>
+								<array/>
 								<key>AllowedPackages</key>
 								<array/>
 								<key>AllowedTaps</key>
@@ -27,18 +33,32 @@
 									<string>homebrew/core</string>
 									<string>homebrew/cask</string>
 								</array>
+								<key>CataloguePackages</key>
+								<array/>
 								<key>CriticalCVSSThreshold</key>
 								<real>9</real>
 								<key>CriticalUpdateDeadlineHours</key>
 								<integer>24</integer>
 								<key>CriticalUpdatesEnabled</key>
 								<true/>
+								<key>DeniedCasks</key>
+								<array/>
+								<key>DeniedFormulae</key>
+								<array/>
+								<key>DeniedPackages</key>
+								<array/>
+								<key>DeniedTaps</key>
+								<array/>
 								<key>Enabled</key>
 								<true/>
 								<key>ExcludedPackages</key>
 								<array/>
+								<key>ForbiddenLicenses</key>
+								<array/>
 								<key>HighlightedPackages</key>
 								<array/>
+								<key>ITContact</key>
+								<string></string>
 								<key>IncludeCasks</key>
 								<true/>
 								<key>IncludeFormulae</key>
@@ -51,12 +71,16 @@
 								<string>20:00</string>
 								<key>MinimumSeverity</key>
 								<string>high</string>
+								<key>PackageAccessMode</key>
+								<string>denylist</string>
 								<key>PackageAllowlistEnforced</key>
 								<false/>
 								<key>PartialFailureReporting</key>
 								<true/>
 								<key>RequireUpdateConfirmation</key>
 								<false/>
+								<key>RequiredPackages</key>
+								<array/>
 								<key>UpdateCadenceDays</key>
 								<integer>7</integer>
 								<key>UpdatePolicy</key>
@@ -81,11 +105,13 @@
 		</dict>
 	</array>
 	<key>PayloadDescription</key>
-	<string>Policy template for Brewmaster 0.1.14. Review before deployment; customise identifiers and UUIDs for your organisation. Does not install Brewmaster or Homebrew.</string>
+	<string>Policy template for Brewmaster 0.1.15. Review before deployment; customise identifiers and UUIDs for your organisation. Does not install Brewmaster or Homebrew.</string>
 	<key>PayloadDisplayName</key>
 	<string>Brewmaster Policy</string>
 	<key>PayloadIdentifier</key>
 	<string>com.paul-ej.brewmaster.configuration</string>
+	<key>PayloadRemovalDisallowed</key>
+	<true/>
 	<key>PayloadScope</key>
 	<string>System</string>
 	<key>PayloadType</key>

@@ -40,7 +40,16 @@ Do not change Boolean values into strings. Unknown or misspelled keys are ignore
 | `MinimumSeverity` | `high`; vulnerability-only threshold. |
 | `IncludeFormulae`, `IncludeCasks` | Both `true`. |
 | `AllowedTaps` | `homebrew/core`, `homebrew/cask`. Unknown/unlisted taps are blocked. |
-| `AllowedPackages` | Empty; used when package allowlisting is enforced. |
+| `PackageAccessMode` | `denylist`; choose `allowlist` for approved-only access, or `denylist` to block `DeniedPackages`. |
+| `AllowedPackages` | Empty; used in allowlist mode or when legacy package allowlisting is enforced. |
+| `DeniedPackages` | Empty; blocked in denylist mode. |
+| `ITContact` | Empty; optional one-line IT contact for blocked-install request templates, at most 256 characters. |
+| `FormulaAccessMode`, `CaskAccessMode` | Omitted; optional per-kind mode/list override. |
+| `AllowedFormulae`, `DeniedFormulae`, `AllowedCasks`, `DeniedCasks` | Empty; set the corresponding kind mode before supplying these lists. |
+| `CataloguePackages`, `RequiredPackages` | Empty; typed `formula:NAME` or `cask:NAME` entries, up to 100 each. Catalogue/baseline membership grants no permission and installs nothing automatically. |
+| `DeniedTaps` | Empty; explicit tap denials override allowed taps. |
+| `ForbiddenLicenses` | Empty; simple SPDX identifiers for separately deployed native Homebrew restrictions. |
+| `AllowUnapprovedPackageRemoval` | `false`; offer always-confirmed removal of packages blocked by the active package lists. Never automatic. |
 | `PackageAllowlistEnforced` | `false`; enabling with an empty allowed list is invalid. |
 | `HighlightedPackages` | Empty; relevant to `highlightedOnly`. |
 | `ExcludedPackages` | Empty; explicit exclusions take precedence. |
@@ -73,3 +82,17 @@ This grants neither Full Disk Access nor administrator privileges, and does not 
 For a personal Mac use System Settings → Privacy & Security → App Management, enable/add `/Applications/Brewmaster.app`, then relaunch it. [Apple's PPPC schema](https://github.com/apple/device-management/blob/release/mdm/profiles/com.apple.TCC.configuration-profile-policy.yaml) documents the service and MDM requirement.
 
 For Iru-owned app delivery, set Boolean `AllowSelfUpdates` to false in the managed preferences payload. This disables the native Check/Download/Install & Quit self-update channel, independently of ordinary Homebrew package restrictions. It does not change external Iru assignments. No extra PPPC grant or privileged helper is needed for self-updates: macOS Installer handles its normal administrator approval.
+
+## Optional Terminal installation wrapper
+
+The signed app includes `/Applications/Brewmaster.app/Contents/Helpers/brewmaster`. Its `shell-init` command prints optional bash/zsh functions; administrators/users can review those and add them through their normal shell configuration process. The installer does not edit startup files or replace Homebrew. `brewmaster install` and wrapped `brew install` share effective managed policy with the app. `brewmaster request --cask PACKAGE` prints a local IT request template; it does not send it or grant permission. IT approves access by updating managed policy.
+
+PackageAccessMode values `allowlist` and `denylist` correspond to whitelist/blacklist modes. A nonempty AllowedPackages list is required in allowlist mode. Legacy PackageAllowlistEnforced=true remains an extra restriction; set it false deliberately when migrating to denylist-only access. Matching accepts short names and qualified identities from resolved tap metadata. The wrapper checks direct requested targets, not dependency graphs or vendor scripts. It is a cooperative guardrail: direct Homebrew commands and other installers can bypass it. No service account, sudo rule, privileged daemon, request backend or automatic removal is installed. Pilot actual MDM preference resolution and shell setup before rollout.
+
+## Managed policy protection and governance
+
+When any known control is forced, Brewmaster ignores all user-local policy overrides, including controls omitted from the profile. Invalid forced data fails closed. The generated System profile has PayloadRemovalDisallowed=true; Apple documents that on current macOS this affects manually installed profiles, while MDM installation/enrollment protections are separate. Deploy through MDM, restrict enrollment removal through your supported enrollment configuration, and verify on standard-user pilot devices. Administrator/root control and direct mutable Homebrew execution remain outside the cooperative wrapper boundary.
+
+For fail-closed managed operation, `brewmaster managed-policy-lock-template FILE` creates a staging file containing required plus a newline. IT can install it as `/Library/Application Support/Brewmaster/require-managed-policy` with a root-owned 0755 parent directory and root-owned 0644 regular file. The client refuses symlinks, user-writable ownership/modes and missing/incomplete forced controls when locked. Deploy every nonoptional key from the current generated profile before activating the marker; update profiles before locked-client upgrades that add controls. The app/PKG never installs or repairs this marker.
+
+`brewmaster homebrew-policy [FILE]` exports supported native deny/tap/licence restrictions for review and separate root-owned `/etc/homebrew/brew.env` deployment. This is not a complete translation of allowlist/approval/scheduling rules. `brewmaster compliance --json` returns counts and fixed assessment warnings without names/private lists or upload; exit 0 means complete/no issues, 1 means complete/issues, 2 means incomplete/invalid evidence. No vulnerability scan is performed. Pilot these commands and the native Homebrew version before rollout.
